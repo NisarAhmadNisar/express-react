@@ -8,15 +8,37 @@ import { Link } from "react-router-dom";
 
 // articles is coming from container/articles/index.js data:{articles}
 class Articles extends React.Component {
+  //Search Products
+  state = {
+    search: ""
+  };
+  updateSearch = e => {
+    this.setState({ search: e.target.value.substr(0, 20) });
+  };
   render() {
+    let filteredArticles = this.props.articles.filter(article => {
+      return (
+        article.title.toLowerCase().indexOf(this.state.search.toLowerCase()) !==
+        -1
+      );
+    });
     return (
       <div>
-        {/* <CountQuery /> */}
         <div className="container">
+          <label htmlFor="search">
+            <strong className="font-weight-bold"> Search: </strong>
+          </label>
+          <input
+            className="form-control"
+            type="text"
+            id="search"
+            value={this.state.search}
+            onChange={this.updateSearch}
+          />
           <div className="row ">
-            {this.props.articles.map(article => {
+            {filteredArticles.map(article => {
               return (
-                <div className="col-md-6 mb-4">
+                <div key={article.id} className="col-md-6 mb-4">
                   <Link to={`/article/${article.id}`}>
                     <h2 className="text-bright">{article.title}</h2>
 
@@ -39,15 +61,6 @@ class Articles extends React.Component {
                   >
                     Read More...
                   </Link>
-                  {/* {article.image.map(img => (
-                  <div className="thumbnail">
-                    <img
-                      src={process.env.REACT_APP_BACKEND_URL + img.url}
-                      alt={img.url}
-                      height="100"
-                    />
-                  </div>
-                ))} */}
                 </div>
               );
             })}
@@ -58,23 +71,5 @@ class Articles extends React.Component {
     );
   }
 }
-
-// const CountQuery = ({ match }) => {
-//   var { id } = match.params.id;
-
-//   return (
-//     <div>
-//       <Query query={ARTICLE_QUERY} id={id}>
-//         {({ data: { article } }) => {
-//           return (
-//             <div>
-//               <h1>{article.title}</h1>
-//             </div>
-//           );
-//         }}
-//       </Query>
-//     </div>
-//   );
-// };
 
 export default Articles;

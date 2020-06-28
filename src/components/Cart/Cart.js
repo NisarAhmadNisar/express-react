@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Title from "../ReusableComponents/Title/Title";
-import CartColumn from "../ReusableComponents/CartColumn";
+import CartColumn from "./CartColumn";
 import EmptyCart from "./EmptyCart";
 import { ProductConsumer } from "../../contextapi";
 import CartList from "./CartList";
@@ -19,7 +19,7 @@ export default class Cart extends Component {
                   <Title name="your" title="cart"></Title>
                   <CartColumn />
                   <CartList value={value} />
-                  <CartTotals value={value} />
+                  <CartTotals value={value} history={this.props.history} />
                 </React.Fragment>
               );
             } else {

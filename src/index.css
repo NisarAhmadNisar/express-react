@@ -45,6 +45,9 @@
   --mainWhite: #f3f3f3;
   --mainDark: #232528;
   --mainYellow: #ffa400;
+  --mainRed: #d90416;
+  --lightRed: #d90432;
+  --mainGreen: #025939;
 }
 body {
   font-family: "Oswald", sans-serif;

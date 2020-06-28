@@ -26,7 +26,16 @@ export default class Modal extends Component {
                       <h3 className="text-center text-capitalize text-blue">
                         item added to the cart
                       </h3>
-                      <img className="img-fluid" src={img} alt="Product" />
+                      {img.map(image => {
+                        // <img className="img-fluid" src={img} alt="Product" />;
+                        return (
+                          <img
+                            src={process.env.REACT_APP_BACKEND_URL + image.url}
+                            alt="Product"
+                            className="img-fluid"
+                          />
+                        );
+                      })}
                       <h5>{title}</h5>
                       <h5 className="text-muted lead ">price: ${price}</h5>
                       <Link to="/shop">

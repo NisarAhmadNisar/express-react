@@ -7,8 +7,8 @@ export default function CartItem({ item, value }) {
     <div className="row my-2 text-capitalize text-center">
       <div className="col-10 mx-auto col-lg-2">
         <img
-          style={{ width: "5rem", height: "5rem" }}
-          src={img}
+          style={{ width: "10rem", height: "10rem" }}
+          src={process.env.REACT_APP_BACKEND_URL + img[0].url}
           alt="prodcut"
           className="img-fluid"
         />
@@ -19,7 +19,7 @@ export default function CartItem({ item, value }) {
       </div>
       <div className="col-10 mx-auto col-lg-2">
         <span className="d-lg-none">price:</span>
-        {price}
+        {price}$
       </div>
       <div className="col-10 mx-auto col-lg-2 my-2 my-lg-0">
         <div className="d-flex justify-content-center">

@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+
 import ProductWrapper from "../ReusableComponents/ImageWrapper/ImageWrapper";
 import { Link } from "react-router-dom";
 import { ProductConsumer } from "../../contextapi";
 import PropTypes from "prop-types";
+// import { storeProducts } from "../../data";
+// import Home from "../Details/tempDetails";
 
 export default class Product extends Component {
   render() {
@@ -17,8 +19,18 @@ export default class Product extends Component {
                 className="img-container p-5"
                 onClick={() => value.handleDetail(id)}
               >
-                <Link to="/details">
-                  <img src={img} alt="product" className="card-img-top" />
+                <Link to={`/details/${id}`}>
+                  {this.props.product.img.map(product => {
+                    return (
+                      <img
+                        key={product.id}
+                        style={{ width: "15rem", height: "15rem" }}
+                        className="card-img-top"
+                        src={process.env.REACT_APP_BACKEND_URL + product.url}
+                        alt="Productimage"
+                      />
+                    );
+                  })}
                 </Link>
                 <button
                   className="card-btn"
@@ -56,7 +68,6 @@ export default class Product extends Component {
 Product.propTypes = {
   product: PropTypes.shape({
     id: PropTypes.number,
-    img: PropTypes.string,
     title: PropTypes.string,
     price: PropTypes.number,
     inCart: PropTypes.bool

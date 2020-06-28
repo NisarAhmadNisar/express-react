@@ -27,23 +27,7 @@ class AllComments extends React.Component {
         </div>
       );
     });
-    // counting comments
-    const commentsCount = this.props.allcomments.comments.map(comment => {
-      this.setState(() => {
-        {
-          this.state.counter += 1;
-        }
-      });
-    });
-    const commentCount = this.state.counter;
-
-    return (
-      <div>
-        {allcomments}
-        {commentsCount}
-        TotalComments:{commentCount}
-      </div>
-    );
+    return <div>{allcomments}</div>;
   }
 }
 

@@ -12,11 +12,11 @@ const ButtonContainer = styled.button`
   padding: 0.2rem 0.5rem;
   cursor: pointer;
   margin: 0.2rem 0.5rem 0.2rem 0;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
   &:hover {
     background: ${props =>
       props.cart ? "var(--mainYellow)" : "var(--lightBlue)"};
-    color: var(--mainBlue);
+    color: var(--mainWhite);
   }
   &:focus {
     outline: none;

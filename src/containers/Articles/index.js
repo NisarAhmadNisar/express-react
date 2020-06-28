@@ -9,7 +9,6 @@ const Home = () => {
     <div>
       <div>
         <div>
-          <h1>Strapi Blog</h1>
           <Query query={ARTICLES_QUERY}>
             {({ data: { articles } }) => {
               return <Articles images={articles.images} articles={articles} />;

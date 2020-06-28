@@ -6,6 +6,23 @@ import ButtonContainer from "../ReusableComponents/Buttons/button";
 export default class Details extends Component {
   render() {
     return (
+      // <If condition={window.performance}>
+      //   <Then>
+      //     <If condition={performance.navigation.type == 1}>
+      //       <Then>
+      //         <ProductConsumer>
+      //           {value => {
+      //             return value.products.map(product => {
+      //               return (
+      //                 <div onLoad={() => value.handleDetail(product.id)}></div>
+      //               );
+      //             });
+      //           }}
+      //         </ProductConsumer>
+      //       </Then>
+      //     </If>
+      //   </Then>
+      //   <Else>
       <ProductConsumer>
         {value => {
           const {
@@ -20,6 +37,7 @@ export default class Details extends Component {
           return (
             <div className="container py-5">
               {/* title  */}
+
               <div className="row">
                 <div className="col-10  text-center text-slanted mx-auto  my-5">
                   <h1 className="text-blue">{title}</h1>
@@ -29,7 +47,11 @@ export default class Details extends Component {
               {/* product info  */}
               <div className="row">
                 <div className="col-10 col-md-6 mx-auto my-3">
-                  <img src={img} alt="product Image" className="img-fluid" />
+                  <img
+                    src={process.env.REACT_APP_BACKEND_URL + img[0].url}
+                    alt="product"
+                    className="img-fluid"
+                  />
                 </div>
                 {/* product text */}
                 <div className="col-10 col-md-6  mx-auto my-3">
@@ -69,6 +91,8 @@ export default class Details extends Component {
           );
         }}
       </ProductConsumer>
+      // </Else>
+      // </If>
     );
   }
 }
